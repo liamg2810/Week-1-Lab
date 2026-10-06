@@ -1,17 +1,32 @@
 package mmu.liam.ac.uk;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import mmu.liam.ac.uk.games.CoinFlip;
+import mmu.liam.ac.uk.games.IGame;
+
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        var games = new IGame[] { new CoinFlip() };
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+        IO.println("Welcome to the game show!\nWe have a nice array of games.");
+
+        for (int i = 0; i < games.length; i++) {
+            IO.println(i + 1 + ": " + games[i].getName());
         }
+
+        Scanner scanner = new Scanner(System.in);
+
+        var num = -1;
+
+        while (num < 0 || games.length <= num) {
+            IO.println("Please enter a valid number from the list:\n");
+            num = scanner.nextInt() - 1;
+            scanner.nextLine();
+        }
+
+        games[num].play();
+
+        IO.println("Thanks for playing!");
     }
 }
