@@ -1,13 +1,14 @@
 package mmu.liam.ac.uk;
 
 import mmu.liam.ac.uk.games.CoinFlip;
+import mmu.liam.ac.uk.games.GreetingPage;
 import mmu.liam.ac.uk.games.IGame;
 
 import java.util.Scanner;
 
 public class Main {
     static void main() {
-        var games = new IGame[] { new CoinFlip() };
+        var games = new IGame[] { new CoinFlip(), new GreetingPage() };
 
         IO.println("Welcome to the game show!\nWe have a nice array of games.");
 
@@ -20,7 +21,7 @@ public class Main {
         var num = -1;
 
         while (num < 0 || games.length <= num) {
-            IO.println("Please enter a valid number from the list:\n");
+            IO.println("Please enter a valid number from the list:");
             num = scanner.nextInt() - 1;
             scanner.nextLine();
         }
